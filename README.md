@@ -1,101 +1,186 @@
-# 🌊 Flood Detection System
+# 🌊 AI-Powered Flood Risk Assessment System
 
-A lean and efficient MVP for flood risk assessment that allows users to enter coordinates or upload images for AI-powered analysis.
+![Project Banner](https://ai-powered-flood-risk-assessment-to.vercel.app/og-image.png)
 
-## Features
+A **cutting-edge MVP** for flood risk assessment that leverages AI to analyze geographic coordinates and terrain images, providing actionable insights for disaster preparedness.
 
-- **Coordinate Analysis**: Enter latitude and longitude for location-based flood risk assessment
-- **Image Analysis**: Upload terrain photos for AI-powered visual analysis
-- **Interactive Map**: Visualize locations with risk overlay
-- **AI-Powered**: Uses Google's Gemini AI for intelligent analysis
-- **Clean UI**: Modern, responsive design with shadcn/ui components
+🔗 **[Live Frontend Demo](https://ai-powered-flood-risk-assessment-to.vercel.app/)**  
+🔗 **[Live Backend API](https://ai-powered-flood-risk-assessment-tool.onrender.com)**
 
-## Quick Start
+---
 
-### Option 1: Start Both Servers Together (Recommended)
+## ✨ Key Features
 
+### **Dual Analysis Modes**
+- **Coordinate Assessment** — Enter precise latitude/longitude for location-based risk evaluation.
+- **Image Analysis** — Upload terrain photos for AI-powered visual flood risk assessment.
+
+### **Intelligent Risk Evaluation**
+- Powered by **Google's Gemini AI** for comprehensive analysis.
+- Considers **elevation**, **proximity to water bodies**, and **historical data**.
+
+### **Interactive Visualization**
+- Dynamic map display with **risk overlays**.
+- Clear visual indicators of threat levels.
+
+### **Actionable Insights**
+- Risk level classification (`Low` / `Medium` / `High`).
+- Prevention recommendations.
+- Historical context for the area.
+
+---
+
+## 🚀 Quick Deployment
+
+### **Prerequisites**
+- Node.js v18+
+- Python 3.9+
+- Gemini API Key
+
+### **Recommended Setup (Single Command)**
 ```bash
-# Set up Gemini API key
+# Configure environment
 cd backend
-echo "GEMINI_API_KEY=your_gemini_api_key_here" > .env
+echo "GEMINI_API_KEY=your_actual_key_here" > .env
 
-# Start both servers
+# Launch full stack
 ./start-dev.sh
 ```
 
-Access the app at:
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:8000
-- **API Docs**: http://localhost:8000/docs
+Access:
+- **Frontend** → http://localhost:3000  
+- **Backend API** → http://localhost:8000  
+- **API Docs** → http://localhost:8000/docs  
 
-### Option 2: Start Servers Separately
+---
 
-#### Backend Setup
+### **Alternative Setup**
+
+#### Backend Service
 ```bash
 cd backend
 python3 -m pip install -r requirements.txt
-echo "GEMINI_API_KEY=your_gemini_api_key_here" > .env
 python3 start.py
 ```
 
-#### Frontend Setup
+#### Frontend Service
 ```bash
 npm install
 npm run dev
 ```
 
-## How to Use
+---
 
-1. **Coordinate Analysis**: Enter latitude and longitude coordinates
-2. **Image Analysis**: Upload terrain photos for AI assessment
-3. **View Results**: See risk level, elevation, distance from water, and recommendations
-4. **Interactive Map**: Visualize the location with risk overlay
+## 🖥️ User Guide
 
-## API Endpoints
+1. **Select Analysis Mode**  
+   - **Coordinates** → For precise geographic evaluation.  
+   - **Image Upload** → For visual terrain assessment.  
 
-- `POST /api/analyze/coordinates` - Analyze flood risk by coordinates
-- `POST /api/analyze/image` - Analyze flood risk by image upload
-- `GET /health` - Health check
+2. **Submit Data**  
+   - Enter valid coordinates (*Decimal Degrees format*).  
+   - Or upload clear terrain/waterway images.  
 
-## Technical Stack
+3. **Review Results**  
+   - Risk level indicator.  
+   - Key factors influencing assessment.  
+   - Recommended precautions.  
+   - Interactive map visualization.  
 
-### Frontend
-- Next.js 15 with App Router
-- TypeScript
-- Tailwind CSS + shadcn/ui
-- Google Maps JavaScript API
+---
 
-### Backend
-- FastAPI
-- Google Gemini AI
-- Python 3.9+
-- Pydantic for validation
+## 🔌 API Reference
 
-## Project Structure
+### **Core Endpoints**
 
+| Method | Endpoint | Payload | Description |
+|--------|----------|---------|-------------|
+| **POST** | `/api/analyze/coordinates` | `{ "latitude": float, "longitude": float }` | Analyze flood risk by coordinates |
+| **POST** | `/api/analyze/image` | Form-data with image file | Analyze flood risk from uploaded image |
+| **GET**  | `/health` | None | Service health check |
+
+📄 **Full API Documentation** → [https://your-backend-service-on-render.com/docs](https://your-backend-service-on-render.com/docs)
+
+---
+
+## 🛠 Technical Architecture
+
+### **Frontend**
+- Framework: **Next.js 15** (App Router)
+- Language: **TypeScript**
+- Styling: **Tailwind CSS** + [shadcn/ui](https://ui.shadcn.com/)
+- Mapping: **Google Maps JavaScript API**
+- State Management: **React Context API**
+
+### **Backend**
+- Framework: **FastAPI**
+- AI Engine: **Google Gemini Pro**
+- Validation: **Pydantic models**
+- Runtime: **Python 3.9+**
+
+---
+
+## 📂 Project Structure
 ```
-flood-analyser/
-├── app/page.tsx           # Main flood detection component
-├── backend/main.py        # FastAPI application with Gemini AI
-├── backend/start.py       # Startup script
-├── start-dev.sh          # Development script
-└── README.md             # Documentation
+flood-risk-assessment/
+├── app/                    # Next.js application
+│   ├── components/         # React components
+│   ├── lib/                # Utilities and hooks
+│   └── page.tsx            # Main interface
+├── backend/                # API service
+│   ├── main.py             # FastAPI application
+│   ├── schemas.py          # Data models
+│   └── services/           # Business logic
+├── public/                 # Static assets
+└── README.md               # Project documentation
 ```
 
-## Setup Requirements
+---
 
-1. **Gemini API Key**: Get from [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. **Google Maps API Key** (optional): For interactive map functionality
+## 🌐 Hosting & Deployment
 
-## Development
+- **Frontend** → Hosted on [Vercel](https://vercel.com/)  
+- **Backend** → Hosted on [Render](https://render.com/)  
 
-```bash
-# Quick start
-./start-dev.sh
-
-# Individual development
-npm run dev          # Frontend
-cd backend && python3 start.py  # Backend
+**Production Environment Variables:**
+```env
+GEMINI_API_KEY=your_production_key
+NEXT_PUBLIC_MAPS_API_KEY=optional_google_maps_key
 ```
 
-The app is now lean and focused on the core flood detection functionality with AI-powered analysis.
+---
+
+## 📈 Roadmap
+
+- [ ] Historical flood data integration  
+- [ ] Multi-image analysis support  
+- [ ] Mobile application port  
+- [ ] Community reporting features  
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions!  
+
+1. Fork the repository.  
+2. Create a new branch (`feature/new-feature`).  
+3. Commit your changes.  
+4. Push to the branch.  
+5. Open a Pull Request.  
+
+For major changes, open an issue first to discuss the proposed modifications.
+
+---
+
+## 📜 License
+MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+## 👤 Author
+
+**Thanka Bharathi** — Data Scientist & AI/ML Developer  
+📧 Email: [thankabharathi0@gmail.com]  
+🔗 LinkedIn: [https://www.linkedin.com/in/thankabharathi/]  
+🐙 GitHub: [https://github.com/ThankaBharathi]  
